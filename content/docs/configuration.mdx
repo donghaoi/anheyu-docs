@@ -25,7 +25,7 @@ server {
     server_name your-domain.com;
 
     location / {
-        proxy_pass http://127.0.0.1:8080;
+        proxy_pass http://127.0.0.1:8091;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -40,7 +40,7 @@ Caddy 默认会自动传递这些头，无需额外配置：
 
 ```txt
 your-domain.com {
-    reverse_proxy localhost:8080
+    reverse_proxy localhost:8091
 }
 ```
 
@@ -52,9 +52,9 @@ your-domain.com {
 # docker-compose.yml
 services:
   anheyu:
-    image: anheyu/anheyu-app:latest
+    image: anheyu/anheyu-backend:latest
     ports:
-      - "8080:8080"
+      - "8091:8091"
     # ...其他配置
 ```
 
